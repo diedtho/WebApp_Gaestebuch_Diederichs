@@ -1,0 +1,68 @@
+﻿@model WebApp_Gaestebuch_Diederichs.ViewModels.GBListe
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div style="width:80%;margin:auto;background-color:red;padding:10px;border-radius:10px">
+        <h1>Besucher-Gästebuch (Admin)</h1>
+        <a href="/home/insert">Neuer Eintrag</a>
+        @if (@Model.listeGaestebuch == null)
+        {
+            <h2>Noch keine Einträge im Gästebuch</h2>
+        }
+        else
+        {
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Titel</th>
+                            <th scope="col">Name (Nick)</th>
+                            <th scope="col">E-Mail</th>
+                            <th scope="col">Hashtag Instagram</th>
+                            <th scope="col">Hashtag Twitter</th>
+                            <th scope="col">Bewertung der Bedienung</th>
+                            <th scope="col">Bewertung des Brauhauses</th>
+                            <th scope="col">Eintrag</th>
+                            <th scope="col">Datum</th>
+                            <th scope="col">Freischaltung</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var eintrag in @Model.listeGaestebuch)
+                        {
+                            <tr>
+                                <td>@eintrag.Id</td>
+                                <td>@eintrag.Titel</td>
+                                <td>@eintrag.NickName</td>
+                                <td>@eintrag.EMail</td>
+                                <td>@eintrag.InstagramHashtag</td>
+                                <td>@eintrag.TwitterHashtag</td>
+                                <td>@eintrag.BewertBedienung</td>
+                                <td>@eintrag.BewertBrauhaus</td>
+                                <td>@eintrag.Eintrag</td>
+                                <td>@eintrag.Datum</td>
+                                <td>
+                                    <input type="checkbox" value="@eintrag.Freischaltung" OnCheckedChanged="/home/admin?id=@eintrag.Id"/>                                    
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</body>
+</html>

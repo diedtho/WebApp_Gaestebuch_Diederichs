@@ -1,0 +1,54 @@
+﻿@model WebApp_Gaestebuch_Diederichs.ViewModels.InsertEintrag
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Insert</title>
+</head>
+<body>
+    <div style="width:80%;margin:auto;background-color:red;padding:10px;border-radius:10px">
+        <h1>Neuer Eintrag</h1>
+        <div style="width:80%;margin:auto;background-color:white;padding:10px;border-radius:10px">
+
+            <form asp-action="insert" method="post">
+
+                <input type="text" asp-for="@Model.Titel" /><span style="color:red" asp-validation-for="@Model.Titel"></span>
+                <label asp-for="@Model.Titel"></label>
+                <br />
+                <input type="text" asp-for="@Model.NickName" /><span style="color:red" asp-validation-for="@Model.NickName"></span>
+                <label asp-for="@Model.NickName"></label>
+                <br />
+                <input type="text" asp-for="@Model.EMail" /><span style="color:red" asp-validation-for="@Model.EMail"></span>
+                <label asp-for="@Model.EMail"></label>
+                <br />
+                <input type="text" asp-for="@Model.InstagramHashtag" /><span style="color:red" asp-validation-for="@Model.InstagramHashtag"></span>
+                <label asp-for="@Model.InstagramHashtag"></label>
+                <br />
+                <input type="text" asp-for="@Model.TwitterHashtag" /><span style="color:red" asp-validation-for="@Model.TwitterHashtag"></span>
+                <label asp-for="@Model.TwitterHashtag"></label>
+                <br />
+                <input type="text" asp-for="@Model.BewertBedienung" value="3" /><span style="color:red" asp-validation-for="@Model.BewertBedienung"></span>
+                <label asp-for="@Model.BewertBedienung"></label>
+                <br />
+                <input type="text" asp-for="@Model.BewertBrauhaus" value="3" /><span style="color:red" asp-validation-for="@Model.BewertBrauhaus"></span>
+                <label asp-for="@Model.BewertBrauhaus"></label>
+                <br />
+                <input type="text" asp-for="@Model.Eintrag" /><span style="color:red" asp-validation-for="@Model.Eintrag"></span>
+                <label asp-for="@Model.Eintrag"></label>
+                <br />
+                <button>Absenden</button>
+            </form>
+
+        </div>
+
+    </div>
+    
+</body>
+</html>
